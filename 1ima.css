@@ -1,0 +1,196 @@
+/* Forhindrer horisontal scrolling på siden og setter en spesifikk bakgrunnsfarge. */
+body {
+    overflow-x: hidden; /* Skjuler horisontal scrollbar for å forhindre sideveis scrolling. */
+    background-color: rgb(197, 189, 241); /* Setter en lilla farge som bakgrunn for hele siden. */
+}
+
+/* Angir at alle rullebevegelser på siden skal skje jevnt, for en bedre brukeropplevelse. */
+html {
+    scroll-behavior: smooth; /* Aktiverer myk scrolling for ankerlenker og når du blar gjennom siden. */
+}
+
+/* Lager navigasjonsmenyen litt gjennomsiktig, fester den øverst på skjermen under scrolling, og gir den unike runde kanter. */
+nav {
+    background-color: rgba(255, 255, 255, 0.527); /* Halvgjennomsiktig hvit bakgrunn. */
+    margin: 0 0 0 0; /* Ingen margin */
+    height: 160px; /* Bestemmer høyden på navigasjonsbaren. */
+    border-radius: 150px; /* Gjør kantene sterkt avrundet for et unikt utseende. */
+    position: sticky; /* Gjør at navigasjonsbaren holder seg øverst på skjermen når du scroller. */
+    z-index: 10; /* Sikrer at navigasjonsbaren ligger over andre elementer. */
+    top: 0; /* Plasserer navigasjonsbaren helt øverst på siden. */
+    width: 100%; /* Gjør at navigasjonsbaren strekker seg over hele skjermens bredde. */
+}
+
+/* Bestemmer størrelsen og plasseringen for et bilde innenfor en container. */
+.img {
+    width: 380px; /* Setter en fast bredde på bildet. */
+    margin: 40px 0 20px 70px; /* Justerer plasseringen av bildet innenfor sin container. */
+}
+
+/* Setter opp en beholder for kontaktinformasjon for å passe pent sammen med andre elementer. */
+.kontakt {
+    position: relative; /* Gjør det mulig å justere posisjonen. */
+    display: inline; /* Viser elementet i linje med andre elementer. */
+    float: inline-end; /* Flytter elementet til slutten av linjen det er på, avhengig av tekstretningen. */
+}
+
+/* Definerer utseendet til en knapp for kontaktinformasjon, med en tydelig og iøynefallende stil. */
+.kontaktb {
+    float: inline-end; /* Plasserer knappen på slutten av sin container. */
+    text-align: center; /* Sentrerer teksten inne i knappen. */
+    border-radius: 150px; /* Gjør kantene på knappen veldig avrundet for et mykt utseende. */
+    background-color: rgb(10, 69, 111); /* Setter en dyp blåfarge som skiller seg ut. */
+    color: white; /* Setter teksten til hvit for kontrast mot den mørke bakgrunnen. */
+    padding: 35px 30px 20px 20px; /* Gir indre avstand for å gjøre teksten klar og knappen større. */
+    font-size: 40px; /* Større tekst for å gjøre knappen lett å lese og mer merkbar. */
+    border: solid white 0.2px; /* En tynn hvit ramme rundt knappen for å definere grensene tydelig. */
+    width: 170px; /* Fast bredde for å sikre et konsistent utseende. */
+    height: 100px; /* Fast høyde for å matche bredden og beholde proporsjoner. */
+    text-decoration: none; /* Fjerner standard understreking fra linker for et renere utseende. */
+    font-family: "Roboto", sans-serif; /* En moderne og ren skrifttype for enkel lesbarhet. */
+    font-weight: 550; /* Medium til tung skriftvekt for å gjøre teksten fremtredende. */
+    margin-left: 30px; /* Gir litt plass til venstre for knappen for å unngå at den kleber til andre elementer. */
+}
+
+/* Tilpasser utseendet på en knapp for å åpne en nedtrekksmeny, med samme stilprinsipper som kontakt-knappen. */
+.dropb {
+    float: inline-end; /* Justerer knappen til slutten av linjen den er på, avhengig av tekstretningen. */
+    border-radius: 150px; /* Gjør kantene på knappen meget avrundet for et mykt utseende. */
+    background-color: rgb(10, 69, 111); /* En dyp blåfarge som skiller seg ut. */
+    color: white; /* Hvit tekst for lesbarhet mot den mørke bakgrunnen. */
+    padding: 25px; /* Indre avstand for å gi knappen et større klikkbart område. */
+    font-size: 40px; /* Stor tekst for å gjøre knappen lett å lese og legge merke til. */
+    border: solid white 0.2px; /* En tynn hvit kant rundt knappen for å tydelig definere dens grenser. */
+    width: 220px; /* Fast bredde for å sikre et konsekvent utseende på tvers av ulike elementer. */
+    height: 160px; /* Fast høyde for å matche bredden og opprettholde proporsjoner, noe høyere enn kontakt-knappen. */
+}
+
+/* Forbereder en beholder for nedtrekksinnhold, som er skjult inntil det aktiveres, for å bli vist når brukeren samhandler med nedtrekksknappen. */
+.dropdown {
+    position: relative; /* Gjør det mulig for posisjonering av nedtrekksinnholdet absolutt innenfor denne beholderen. */
+    display: inline; /* Linjer opp nedtrekksmenyen med andre inline-elementer eller tekst. */
+    float: inline-end; /* Flytter nedtrekksmenyen mot slutten av sin nåværende linje, avhengig av tekstretningen. */
+}
+
+/* Angir stilen for innholdet i nedtrekksmenyen, som bakgrunn, avstand og synlighet, klart til å bli vist når det er interaksjon. */
+.dropdownContent {
+    display: none; /* Opprinnelig skjult, vises ikke før brukeren holder musepekeren over utløseren for nedtrekksmenyen. */
+    position:absolute; /* Posisjonert absolutt for å flyte over annet innhold, basert på sin foreldres relative posisjon. */
+    width: 220px; /* Angitt bredde for å samsvare med størrelsen på nedtrekksknappen for et konsistent utseende. */
+    height: 250px; /* Høyde for å romme lenkene eller elementene i nedtrekksmenyen. */
+    top: 100%; /* Posisjonert rett under nedtrekksknappen. */
+    border-radius: 50px; /* Runde kanter for et moderne, vennlig utseende. */
+}
+
+/* Bruker stil på lenker i nedtrekksmenyen, noe som gjør dem visuelt tiltalende og enkle å samhandle med. */
+.dropdownContent a {
+    display: block; /* Hver lenke tar opp hele bredden av nedtrekksmenyen, noe som skaper et blokklignende utseende for enklere klikking. */
+    color: white; /* Tekstfargen for lesbarhet mot nedtrekksmenyens bakgrunn. */
+    padding: 30px; /* Polstring rundt teksten for visuell plass og komfort ved samhandling. */
+    text-decoration: none; /* Fjerner standard understrekning fra lenker for et renere utseende. */
+    font-size: 40px; /* Stor skriftstørrelse for enkel lesing og et dristig utseende. */
+    text-align: center; /* Sentrerer teksten innenfor hver nedtrekkslenke for et balansert, formelt oppsett. */
+    border-radius: 250px; /* Sterkt avrundede kanter for lenkene, fremhever det moderne, knappeliknende utseendet. */
+    margin: 10px 5px; /* Marginer rundt hver lenke for å skape plass mellom dem, forbedrer visuell separasjon. */
+    background-color: rgba(0, 0, 0, 0.7); /* Halvgjennomsiktig svart bakgrunn for lenkene, legger til dybde og fokus. */
+    font-weight: bold; /* Fet tekst for vektlegging og for å trekke oppmerksomhet til nedtrekksvalgene. */
+}
+
+/* Endrer visningen av nedtrekksinnholdet til blokk (synlig) når brukeren holder musepekeren over, slik at de kan samhandle. */
+.dropdown:hover .dropdownContent {
+    display: block; /* Gjør nedtrekksinnholdet synlig ved hover, inviterer til brukerinteraksjon. */
+    float: inline-end; /* Sørger for at nedtrekksinnholdet er i tråd med enden av utløserknappen for en sammenhengende opplevelse. */
+}
+
+/* Justerer utseendet på nedtrekksknappen når det tilsvarende innholdet samhandles med, forbedrer brukertilbakemeldingen. */
+.dropdown:hover .dropb {
+    background-color: rgba(255, 255, 255, 0); /* Gjør knappen gjennomsiktig, indikerer aktiv interaksjon eller fokus. */
+    border: none; /* Fjerner kanten for en sømløs overgang til aktiv tilstand. */
+    color: black; /* Endrer tekstfargen til svart for kontrast mot den nå gjennomsiktige bakgrunnen. */
+}
+
+/* Styler lenker inni elementer med klassen .dropdownContent når brukeren holder musepekeren over dem */
+.dropdownContent a:hover {
+    background-color: rgba(0, 14, 54, 0.861); /* Endrer bakgrunnsfargen til en mørk blå med litt transparens når lenken holdes over */
+    border-radius: 250px; /* Setter en veldig avrundet grense på lenken for å gi den en knapp-lignende eller "boble"-utseende */
+}
+
+/* Gir hovedtittelen en distinkt stil med bakgrunnsbilde og tekstskuggen */
+h1 {
+    text-align: center; /* Sentrerer teksten */
+    background-image: url('DSC_0004.JPG'); /* Setter et bakgrunnsbilde */
+    background-repeat: no-repeat; /* Forhindrer gjentagelse av bakgrunnsbildet */
+    background-size: cover; /* Sørger for at bakgrunnsbildet dekker hele området */
+    background-attachment: scroll; /* Bakgrunnsbildet ruller med siden */
+    border-radius: 30px; /* Avrundede hjørner for elementet */
+    height: 450px; /* Setter høyden på elementet */
+    margin-block-end: 0; /* Fjerner blokkmargen nedenfor */
+    padding-top: 250px; /* Plasserer tekst nedover i elementet */
+    margin-top: 10px; /* Liten toppmarg */
+    font-size: 100px; /* Stor skriftstørrelse for tittelen */
+    color: white; /* Hvit tekstfarge */
+    text-shadow: 5px 5px 5px blue; /* Skyggeeffekt for teksten */
+    z-index: 1; /* Sikrer at elementet ligger over bakgrunnsbildet */
+    position: relative; /* Nødvendig for z-index */
+    margin-left: -10px; /* Justerer elementets venstre marg */
+    margin-right: -10px; /* Justerer elementets høyre marg */
+}
+
+/* Stiler for en innholdscontainer kalt '.block', som ofte brukes til å fremheve seksjoner av siden. */
+.block {
+    margin-left: 100px; /* Setter en venstre margin for å skyve blokken litt inn fra venstrekanten av skjermen. */
+    margin-right: 100px; /* Setter en høyre margin for å holde innholdet fra å strekke seg helt til høyrekanten. */
+    box-shadow: 2px 2px 40px 5px #000000; /* Legger til en skygge rundt blokken for å gi den dybde og løfte den visuelt fra resten av siden. */
+    padding: 20px 50px 20px 50px; /* Gir innvendig plass rundt innholdet i blokken for å unngå at tekst eller bilder berører kantene direkte. */
+    z-index: -1; /* Sikrer at blokken ligger under visse andre elementer */
+    position: relative; /* Nødvendig for z-index */
+    border-radius: 0 0 30px 30px; /* Runder av de nederste hjørnene av blokken for et mykere og mer estetisk tiltalende utseende. */
+    background-color: white; /* Setter bakgrunnsfargen til hvit, noe som kan bidra til å fremheve innholdet mot en mørkere bakgrunn eller gi klarhet i designet. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Bruker en moderne og lettleselig skrifttype som passer til mange typer webinnhold. */
+    font-size: 50px; font-size: 50px; /* Øker skriftstørrelsen for å gjøre teksten inni blokken mer oppsiktsvekkende og lesbar. */
+}
+
+/* Setter opp en kolonnebasert layout for innhold */
+.column {
+    column-count: 2; /* Deler innholdet i to kolonner */
+    column-gap: 50px; /* Avstand mellom kolonnene */
+}
+
+.h21 {
+    margin-bottom: 50px; /* Bunnmarg for å skape plass */
+}
+
+.h22 {
+    margin-bottom: 50px; /* Bunnmarg for å skape plass */
+    margin-top: 0; /* Setter toppmargen til 0 for å unngå uønsket plass over blokken, som kan være nyttig for å oppnå et strammere layout. */
+}
+
+/* Definerer stilregler for tabeller, inkludert kollapsing av kanter og sentrering */
+table {
+    border-collapse: collapse; /* Fjerner mellomrom mellom bordkanter */
+    text-align: center; /* Sentrerer teksten i tabellcellene */
+    width: 100%; /* Tabellen strekker seg over hele tilgjengelige bredden */
+    border: 3px solid black; /* Sort kant rundt tabellen */
+}
+
+/* Uniform stil for alle tabellceller, rader og kolonneoverskrifter */
+td, tr, th {
+    border: 3px solid black; /* Sort kant rundt hver celle */
+}
+
+/* Deler fotnoteområdet i to kolonner for å organisere informasjonen bedre. */
+.columnfoot {
+    column-count: 2; /* Deler innholdet i to vertikale kolonner. */
+    margin-left: 100px; /* Setter en venstre margin for å skape litt plass rundt innholdet. */
+}
+
+/* Definerer stilen for bunnteksten (footer), gir den en mørk bakgrunn og lyse tekster. */
+footer {
+    background-color: rgb(10, 69, 111); /* Setter en mørkeblå farge som bakgrunn. */
+    color: white; /* Tekstfargen inni bunnteksten er hvit for kontrast. */
+    font-size: 50px; /* Teksten er stor for å være lett å lese. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Bruker en ren og moderne skrifttype. */
+    padding: 50px; /* Legger til plass rundt innholdet inni bunnteksten. */
+    width: 100%; /* Bunnteksten strekker seg over hele bredden av visningsområdet. */
+    margin: 30px -10px -10px -10px; /* Justerer plasseringen av bunnteksten med negativ margin for å trekke den nærmere kantene. */
+}
